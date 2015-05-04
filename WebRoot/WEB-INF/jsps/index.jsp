@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="mx" tagdir="/WEB-INF/tags"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -11,14 +12,13 @@
 </head>
 
 <body>
-	<img src="${pageContext.request.contextPath}/resources/girl.jpg">
-	<br /> 
-	spring MVC! success!!!
-	<br />
+<mx:message></mx:message>
 	
 	<div>
+		<h2>操作列表</h2>
 		<ul>
-			<li> <a href="/person/listAll">用户列表</a></li>
+			<li> <a href="${pageContext.request.contextPath}/person/listAll.action">用户列表</a></li>
+			<li> <a href="${pageContext.request.contextPath}/person/tocreate.action">创建用户</a></li>
 		</ul>
 	</div>
 	

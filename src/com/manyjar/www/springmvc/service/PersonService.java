@@ -1,4 +1,4 @@
-package cn.itcast.springmvc.service;
+package com.manyjar.www.springmvc.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,7 +7,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-import cn.itcast.springmvc.domain.Person;
+import com.manyjar.www.springmvc.domain.Person;
 
 @Service
 public class PersonService {
@@ -22,6 +22,7 @@ public class PersonService {
 			p.setId(id);
 			p.setName("tony"+i);
 			p.setAge(20+i);
+			p.setPhotoPath("/resources/girl.jpg");
 			
 			map.put(p.getId(), p);
 			

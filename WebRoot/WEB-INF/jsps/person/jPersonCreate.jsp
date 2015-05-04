@@ -1,4 +1,7 @@
-<%@ page language="java" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="mx" tagdir="/WEB-INF/tags"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -11,6 +14,8 @@
 </head>
 
 <body>
+<mx:message></mx:message>
+
 	<form action="${pageContext.request.contextPath}/person/saveOrUpdate.action" method="post" enctype="multipart/form-data">
 		<h2>新增用户</h2>
 		<table>
@@ -28,7 +33,7 @@
 			</tr>
 			<tr>
 				<td>photo:</td>
-				<td><input type="file" name="photoPathxx" /></td>
+				<td><input type="file" name="photo" /></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" /></td>
@@ -36,5 +41,13 @@
 		</table>
 
 	</form>
+	
+	<div>
+		<h2>操作列表</h2>
+		<ul>
+			<li> <a href="${pageContext.request.contextPath}/person/listAll.action">用户列表</a></li>
+			<li> <a href="${pageContext.request.contextPath}/person/tocreate.action">创建用户</a></li>
+		</ul>
+	</div>
 </body>
 </html>

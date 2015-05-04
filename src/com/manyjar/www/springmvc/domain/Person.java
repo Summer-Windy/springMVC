@@ -1,4 +1,4 @@
-package cn.itcast.springmvc.domain;
+package com.manyjar.www.springmvc.domain;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;

@@ -1,4 +1,4 @@
-package cn.itcast.springmvc.web.controller;
+package com.manyjar.www.springmvc.web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

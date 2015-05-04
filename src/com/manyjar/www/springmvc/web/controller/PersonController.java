@@ -1,4 +1,4 @@
-package cn.itcast.springmvc.web.controller;
+package com.manyjar.www.springmvc.web.controller;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import cn.itcast.springmvc.domain.Person;
-import cn.itcast.springmvc.service.PersonService;
+import com.manyjar.www.springmvc.domain.Person;
+import com.manyjar.www.springmvc.service.PersonService;
 
 @Controller
 @RequestMapping("/person")
@@ -36,7 +36,7 @@ public class PersonController {
 		List<Person> personList = ps.listAll();
 		model.put("personList", personList);
 		
-		System.out.println(" listall hello");
+		System.out.println(" listall ");
 		
 		return "person/jPersonList";
 	}
@@ -47,7 +47,7 @@ public class PersonController {
 		List<Person> personList1 = ps.listAll();
 		model.addAttribute(personList1);
 		
-		System.out.println(" listallother1 hello");
+		System.out.println(" listallother1 ");
 		
 		return "person/jPersonList";
 	}
@@ -61,21 +61,32 @@ public class PersonController {
 	
 	//转向修改页面
 	@RequestMapping("/toupdate")
-	public String toupdate(Integer id, Model model){
+	public String toupdate(Integer id,
+			Model model,
+			Map<Object,Object>  resultMap){
 		Person p = ps.get(id);
 		model.addAttribute(p);
+		resultMap.put("personKey", p);
 		
 		return "person/jPersonUpdate";
 	}
 	
 	//保存
 	@RequestMapping("/saveOrUpdate")
-	public String saveOrUpdate(  HttpServletRequest request,@Valid Person p, BindingResult br, MultipartFile photo) throws IOException{
+	public String saveOrUpdate(  
+			HttpServletRequest request,
+			@Valid Person p,  //直接将字段映射成对应的model对象
+			BindingResult br, 
+			MultipartFile photo
+			) throws IOException{
 		//错误处理
 		if(br.hasErrors()){
 			return "/person/jPersonUpdate";
 		}
 		
+		if(photo.isEmpty()){
+			System.out.println("用户未上传头像！");
+		}
 		//上传图片
 		ServletContext sc = request.getSession().getServletContext();
 		String dir = sc.getRealPath("/upload/");
